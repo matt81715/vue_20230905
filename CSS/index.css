@@ -1,0 +1,92 @@
+
+:root {
+    --mycolor1: #e8e4d8;
+    --mycolor2: #b97d47;
+    --mycolor3: #8aabb0;
+    --mycolor4: #bfd8b6;
+    --mycolor5: #004681;
+    --mycolor6: #9ba9d0;
+    --mycolor7: #d5e8f2;
+    --mycolor8: #c20322;
+    --mycolor9: #d3a570;
+    --mycolor10: #bff8b6;
+    --mycolor11: #EBEBE3;
+    --mycolor12: #C7D6DB;
+    --mycolor13: #C6D2BE;
+    --mycolor14: #83B1C9;
+    --mycolor15: #83B1C9;
+    --mycolor16: #CFDD8E;
+    --mycolor17: #B1D3c5;
+    --mycolor18: #a3b6c5;
+    --mycolor19: #909fa6;
+    --mycolor20: #183143;
+    --mycolor21: #8aabb0;
+    --mycolor22: #2b7f87;
+    --mycolor23: #02edab;
+
+}
+
+body {
+    background-image: url(../img/picture\ \(10\).jpg);
+    background-size: 2200px, 200px;
+    background-position: center 30%;
+
+}
+
+.wapper {
+    /* margin: 0 auto; */
+    /* width: 1024px; */
+}
+
+.wapper .logo {
+    position: relative;
+    width: 700px;
+    height: 70px;
+    background-image: url(../img/logo.png);
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, 0%);
+}
+
+h1 {
+    text-align: center;
+    color: var(--mycolor8);
+}
+
+h4 {
+    text-align: center;
+    color: var(--mycolor22);
+}
+
+nav {
+    text-align: center;
+}
+
+nav ul {
+    display: auto;
+}
+
+nav ul li {
+
+    list-style-type: none;
+}
+
+nav ul li a {
+    display: block;
+    border: 2px solid;
+    border-color: var(--mycolor14);
+    background-image: linear-gradient(180deg, rgba(98, 79, 59, 0.9), rgba(195, 170, 156, 0.2), rgba(211, 205, 205, 0.3));
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 25px;
+    color: var(--mycolor5);
+}
+
+nav ul li a:hover {
+    background-color: var(--mycolor5);
+    color: var(--mycolor14);
+
+}

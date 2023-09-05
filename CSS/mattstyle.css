@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;500;700;900&display=swap');
+
+:root {
+    --mycolor1: #e8e4d8;
+    --mycolor2: #b97d47;
+    --mycolor3: #8aabb0;
+    --mycolor4: #bfd8b6;
+    --mycolor5: #004681;
+    --mycolor6: #9ba9d0;
+    --mycolor7: #d5e8f2;
+    --mycolor8: #c20322;
+    --mycolor9: #d3a570;
+    --mycolor10: #bff8b6;
+    --mycolor11: #EBEBE3;
+    --mycolor12: #C7D6DB;
+    --mycolor13: #C6D2BE;
+    --mycolor14: #83B1C9;
+    --mycolor15: #83B1C9;
+    --mycolor16: #CFDD8E;
+    --mycolor17: #B1D3c5;
+    --mycolor18: #a3b6c5;
+    --mycolor19: #909fa6;
+    --mycolor20: #183143;
+    --mycolor21: #8aabb0;
+    --mycolor22: #2b7f87;
+    --mycolor23: #02edab;
+
+}
+
+.demo {
+    border: 5px solid var(--mycolor5);
+    margin: 15px;
+    padding: 15px;
+}
+
+hr {
+    border: none;
+    height: 3px;
+    background-color: var(--mycolor8);
+}
+
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-900 {
+    font-weight: 900;
+}
+.box1{
+    width: 200px;
+    height: 200px;
+    border: 2px solid ;
+    margin: 10px;
+}
+.box2{
+    
+    height: 200px;
+    border: 2px solid var(--mycolor19);
+    background-color: var(--mycolor15);
+    margin: 10px;
+}
+.bg-cover{
+    background-position: center center;
+    background-size: cover;
+}

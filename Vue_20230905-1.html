@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/mattstyle.css">
+    <link rel="stylesheet" href="CSS/animate.css_4.1.1_animate.min.css">
+    <link rel="stylesheet" href="CSS/all.min.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 1.V-model 綁定 -->
+        <div class="demo">
+            <h2>1.V-model 綁定</h2>
+            <input type="text" class="form-control" V-model="mytitle">
+            <!-- v-model:用於實現雙向數據綁定，它可以將表單輸入元素與 Vue.js 組件中的數據之間建立關聯 -->
+            <h2 class="mt-2">示範2</h2>
+            <input type="text" class="form-control" V-model="text02">
+            <p class="h3 mt-3">你輸入的字為:{{mytitle}}</p>
+            <div V-text="text01"></div>
+            <div V-html="text01"></div>
+            <!-- V-text:顯示文字型態
+                 V-html:網頁顯示型態(這個比較有資料危險) -->
+        </div>
+        <!-- 2.V-bind 綁定 -->
+        <div class="demo">
+            <h2>2.V-bind(簡寫:)</h2>
+            <!-- V-bind:它允许您动态地更新 HTML 元素的属性，将 Vue.js 数据与 DOM 元素保持同步 -->
+            <img V-bind:src="imgSrc" alt="" class="w-50">
+            <img V-bind:src="imgSrc1" alt="" V-bind:class="classW25" class="ms-2">
+            <img V-bind:src="imgSrc1" alt="" V-bind:class="classW50" class="mt-2">
+            <h3>用修改的方式來做示範</h3>
+            <input type="text" class="form-control my-3" V-model="imgSrc">
+        </div>
+        <!--3. V-if and v-for -->
+        <div class="demo">
+            <h2>3.V-if and v-for</h2>
+            <h3>v-for顯示</h3>
+            <ul class="list-group">
+                <li class="list-group-item">飲品 價格</li>
+                <li class="list-group-item" V-for="(item, key) in list">
+                    {{key+1}}.{{item.product}} : {{item.price}}元
+                </li>
+            </ul>
+            <hr>
+            <h3>用v-for配v-if</h3>
+            <ul class="list-group">
+                <!-- v-for跟v-if不能放在同一行，要配在一起時v-for需要放在template上面 -->
+                <template V-for="(item, key) in list">
+                    <li class="list-group-item" V-if="item.price < 40">
+                        {{key+1}}.{{item.product}} : {{item.price}}元
+                    </li>
+                </template>
+            </ul>
+            <hr><!-- 自製分隔線CSS -->
+            <h3>v-if顯示</h3>
+            <div class="h1 mt-3" v-if="textShow">
+                {{text02}}
+            </div>
+            <hr>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <!-- v-on:click:按下
+                            .prevent:不會因每次點後都跑上去-->
+                    <a class="nav-link " href="#" 
+                    v-on:click.prevent="mylink = '咖啡'"
+                        v-bind:class="{'active': mylink == '咖啡'}">咖啡</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" 
+                    v-on:click.prevent="mylink='奶茶'"
+                        v-bind:class="{'active':mylink=='奶茶'}">奶茶</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" 
+                    v-on:click.prevent="mylink='紅茶'"
+                        v-bind:class="{'active':mylink=='紅茶'}">紅茶</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" 
+                    v-on:click.prevent="mylink='綠茶'"
+                        v-bind:class="{'active':mylink=='綠茶'}">綠茶</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" 
+                    v-on:click.prevent="mylink='珍珠奶茶'"
+                        v-bind:class="{'active':mylink=='珍珠奶茶'}">珍珠奶茶</a>
+                </li>
+            </ul>
+            <ul class="list-group">
+                <template V-for="(item, key) in list">
+                    <li class="list-group-item" V-if="item.product == mylink">
+                        {{item.city}}地區 {{item.product}} : {{item.price}}元
+                    </li>
+                </template>
+            </ul>
+            <hr>
+            <h3>用v-for顯示</h3>
+            <ul class="nav nav-tabs">
+                <li class="nav-item" v-for="item in list">
+                    <a class="nav-link " href="#" 
+                    v-on:click.prevent="mylink = item.product"
+                     v-bind:class="{'active' : mylink == item.product}">{{item.product}}</a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <p class="h1">{{text01}}</p>
+    </div>
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="js/jquery-3.7.0.min.js"></script> 有vue(下方)存在可以就捨去掉jquery -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+
+        const App = {
+            data() {
+                return {
+                    text01: '<h1>vueeee<h1>',
+                    text02: 'hello',
+                    mytitle: 'Vue 教學示範',
+                    imgSrc: "img/02-01.jpg",
+                    imgSrc1: "img/02-03.jpg",
+                    classW50: 'w-50',
+                    classW25: 'w-25',
+                    textShow: false,
+                    mylink: '咖啡',
+                    list: [
+                        {
+                            product: '咖啡',
+                            price: 50,
+                            city: '台中市'
+                        },
+                        {
+                            product: '珍珠奶茶',
+                            price: 55,
+                            city: '台北市'
+                        },
+                        {
+                            product: '奶茶',
+                            price: 30,
+                            city: '台南市'
+                        },
+                        {
+                            product: '紅茶',
+                            price: 25,
+                            city: '台東市'
+                        },
+                        {
+                            product: '綠茶',
+                            price: 25,
+                            city: '彰化市'
+                        },
+                    ]
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app')
+        //VUE:資料物件 createAPP:創建App  mount:裝上
+    </script>
+</body>
+
+</html>

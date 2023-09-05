@@ -1,0 +1,182 @@
+        :root {
+            --mycolor1: #EBEBE3;
+            --mycolor2: #C7D6DB;
+            --mycolor3: #C6D2BE;
+            --mycolor4: #83B1C9;
+            --mycolor5: #83B1C9;
+            --mycolor6: #C7D6D8;
+            --mycolor7: #CFDD8E;
+            --mycolor8: #B1D3c5;
+            --mycolor9: #a3b6c5;
+            --mycolor10: #909fa6;
+            --mycolor11: #183143;
+            --mycolor12: #8aabb0;
+            --mycolor13: #2b7f87;
+            --mycolor14: #02edab;
+
+
+        }
+
+        body {
+            background-color: var(--mycolor4);
+            padding: 15px;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            width: 1024px;
+        }
+
+        .wrapper img {
+            width: 100%;
+        }
+
+        .wrapper .logo {
+            width: 100%;
+            height: 200px;
+            background-color: var(--mycolor11);
+            background-image: url(../img/picture\ \(7\).jpg);
+            background-position: center center;
+            background-size: cover;
+            /*background-image: url(圖路徑):可直接帶入圖片
+                background-position:設定圖XY軸
+                background-size:設定圖片顯示範圍
+                cover:延展*/
+        }
+
+        nav {
+            background-color: var(--mycolor2);
+            text-align: center;
+            /*text-align:針對文字排版*/
+        }
+
+        nav ul {
+            display: inline-block;
+            /* display:指定元素顯示方式 
+            inline-block:保持行內特性 */
+        }
+
+        nav ul li {
+            float: left;
+            /*格式表示*/
+            list-style-type: none;
+            /*標點類型*/
+        }
+
+        nav ul li a {
+            display: block;
+            /*block:用於指定元素的顯示方式為區塊*/
+            padding-top: 5px;
+            /*padding-*(內距)
+            ->top(上邊)bottom(下邊)left(左邊)right(右邊)*/
+            padding-bottom: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color: var(--mycolor1);
+            margin-right: 2px;
+            /*margin-*(外距)->如同padding差不多*/
+            color: var(--mycolor4);
+            /*更改字體顏色*/
+            text-decoration: none;
+            /*超連結底線取消*/
+            font-weight: bolder;
+            /*字體變粗*/
+        }
+
+        nav ul li a:hover {
+            /*:hover->為滑鼠移過去的變化*/
+            background-color: aquamarine;
+            color: red;
+        }
+
+        .nav1 {
+            background-color: var(--mycolor8);
+            text-align: center;
+        }
+
+        .nav1 ul {
+            display: inline-block;
+        }
+
+        .nav1 ul li {
+            float: left;
+            list-style-type: none;
+        }
+
+        .nav1 ul li a {
+            display: block;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color: var(--mycolor2);
+            margin-right: 10px;
+            color: var(--mycolor10);
+            text-decoration: none;
+            font-weight: bolder;
+        }
+
+        .nav1 ul li a:hover {
+            background-color: var(--mycolor6);
+            color: brown;
+        }
+
+        .content_in {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            text-align: center;
+            background-color: var(--mycolor9);
+        }
+
+        .content_in h1 {
+            color: brown;
+            margin-bottom: 50px;
+        }
+
+        .content_in p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .content_in a {
+            text-decoration: none;
+            display: inline-block;
+            background-color: var(--mycolor1);
+            color: darkkhaki;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            font-size: 18px;
+            /*字體大小*/
+            line-height: 20px;
+            /*指定元素的行高（行間距）*/
+
+        }
+
+        .content_in a:hover {
+            background-color: #83B1C9;
+            color: magenta;
+        }
+
+        .footer {
+            background-color: var(--mycolor11);
+            color: var(--mycolor12);
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 30px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 5px;
+        }
+
+        /* 設置螢幕寬度小於max-width:(設置的大小)px，而可以完整顯示 */
+        @media screen and (max-width:1024px) {
+            .wrapper {
+                width: 95%;
+            }
+        }
