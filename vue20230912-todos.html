@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代辦事項 - ToDos</title>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/mattstyle.css">
+    <link rel="stylesheet" href="CSS/animate.css_4.1.1_animate.min.css">
+    <link rel="stylesheet" href="CSS/all.min.css">
+    <style>
+        .completed {
+            text-decoration: line-through;
+            /* 畫上刪除線 */
+            color: var(--mycolor8);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 mt-5">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">代辦事項</span>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                            aria-describedby="button-addon2" v-model="newTodo">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                            @click="addTodo()">Button</button>
+                        <!-- v-on = @
+                            v- -->
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="#" @click="visibility='all'"
+                                        v-bind:class="{'active':visibility == 'all'}">全部</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link " href="#" @click="visibility='active'"
+                                        v-bind:class="{'active':visibility == 'active'}">進行中</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="#" @click="visibility='completed'"
+                                        v-bind:class="{'active':visibility == 'completed'}">已完成</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item" v-for="(item,key) in filterTodo">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault" v-model="item.completed">
+                                            <label class="form-check-label" for="flexCheckDefault"
+                                                :class="{'completed':item.completed}">
+                                                {{item.title}}
+                                            </label>
+                                        </div>
+                                        <button type="button" class="btn-close btn-close-dark" aria-label="Close"
+                                            @click="removeTodo(item)"></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <span>還有XX比任務未完成</span>
+                            <a href="#">清除所有的任務</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="js/jquery-3.7.0.min.js"></script> 有vue(下方)存在可以就捨去掉 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+
+        const App = {
+            data() {
+                return {
+                    newTodo: '吃早餐',
+                    visibility: 'all',
+                    todos: [
+                        {
+                            id: '001',
+                            title: '開會',
+                            completed: false,
+                        },
+                        {
+                            id: '002',
+                            title: '打掃',
+                            completed: false,
+                        },
+                        {
+                            id: '003',
+                            title: '購物',
+                            completed: false,
+                        },
+                        {
+                            id: '004',
+                            title: '吃早餐',
+                            completed: false,
+                        },
+                    ]
+
+                }
+            },
+            methods: {
+                //增加
+                addTodo() {
+                    console.log(Date.now());
+                    const timestamp = Date.now();
+                    const mytitle = this.newTodo.trim();
+                    //trim():把打過的空白字消除
+                    if (!mytitle) {
+                        return;
+                    }
+
+                    this.todos.push({
+                        id: timestamp,
+                        title: mytitle,
+                        completed: false,
+                    });
+                    this.newTodo = '';
+                },
+                //刪除
+                removeTodo(todo) {
+                    //定義this
+                    const vm = this;
+
+                    const newIndex = vm.todos.findIndex((item, index) => {
+                        //todo的id==列表(item)的id
+                        return todo.id == item.id
+                    });
+                    vm.todos.splice(newIndex, 1);
+                }
+            },
+            computed: {
+                // filter:(單字)過濾
+                filterTodo() {
+                    const vm = this;
+                    if (vm.visibility == 'all') {
+                        return vm.todos;
+                    } else if (vm.visibility == 'active') {
+                        // 進行中篩選
+                        const activeTodo = [];
+                        vm.todos.forEach((item, key) => {
+                            if (!item.completed) {
+                                activeTodo.push(item);
+                            }
+                        });
+                        return activeTodo;
+                    }else{
+                        // 已完成的篩選
+                        const completedTodo = [];
+                        vm.todos.forEach((item, key) => {
+                            if (item.completed) {
+                                completedTodo.push(item);
+                            }
+                        });
+                        return completedTodo;
+                    }
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app');
+    </script>
+</body>
+
+</html>
